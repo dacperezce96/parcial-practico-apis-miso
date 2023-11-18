@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { MemberEntity } from "src/member/member.entity";
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from "typeorm";
+import { MemberEntity } from "../member/member.entity";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from "typeorm";
 
 @Entity()
 export class ClubEntity {
@@ -21,6 +21,7 @@ export class ClubEntity {
     description: string;
 
     @ManyToMany(() => MemberEntity, member => member.clubs)
+    @JoinTable()
     members: MemberEntity[];
 
 
